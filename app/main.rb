@@ -1,9 +1,8 @@
 require_relative "board.rb"
-MOVEMENT_COOLDOWN_TIME = 10
+MOVEMENT_COOLDOWN_TIME = 5
 
 def tick args
   if args.state.game_over
-    args.state.score = nil
     args.state.movement_cooldown_timer = nil
     args.state.board_state = nil
     args.state.movement_direction = nil
@@ -18,6 +17,12 @@ def tick args
       h: 50,
       path: "sprites/restart_button.png"
     }
+
+    args.outputs.labels << {
+      x: (args.grid.w / 2) - 75 + 25,
+      y: (args.grid.h / 2) + 25 + 100,
+      text: "Score: #{args.state.score}"
+    }
   
     args.outputs.labels << {
       x: 100,
@@ -27,6 +32,7 @@ def tick args
 
     if args.inputs.mouse.click
       if args.inputs.mouse.inside_rect?(restart_button)
+        args.state.score = 0
         args.state.game_over = false
       end
     end

@@ -3,7 +3,7 @@ devid=Emptypond
 devtitle=simple_snakes
 gameid=simple_snakes
 gametitle=Simple Snakes
-version=0.2
+version=0.3
 icon=metadata/icon.png
 
 # === Flags available at all licensing tiers ===
